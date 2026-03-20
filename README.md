@@ -137,8 +137,8 @@ Open `src-tauri/tauri.conf.json` and update the commands:
 ```json
 {
   "build": {
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm --prefix node_modules/react-native-tauri run dev",
+    "beforeBuildCommand": "npm --prefix node_modules/react-native-tauri run build"
     "devUrl": "http://localhost:3000"
   }
 }
@@ -253,29 +253,6 @@ Located in: `src-tauri/target/release/bundle/`
 
 ---
 
-## 📝 Project Structure
-
-```
-react-native-tauri/
-├── src/                          # Frontend source code
-│   ├── App.tsx                   # Main React app
-│   ├── index.tsx                 # React entry point
-│   └── empty.js                  # Polyfill for unavailable modules
-├── src-tauri/                    # Tauri backend (Rust)
-│   ├── src/
-│   │   └── main.rs               # Rust entry point
-│   ├── tauri.conf.json           # Tauri configuration
-│   └── Cargo.toml                # Rust dependencies
-├── templates/
-│   └── tauri.conf.json           # Template configuration
-├── index.html                    # HTML entry point
-├── vite.config.ts                # Vite configuration
-├── tsconfig.json                 # TypeScript configuration
-└── package.json                  # npm dependencies
-```
-
----
-
 ## 🔧 Configuration
 
 ### Vite Configuration (vite.config.ts)
@@ -302,18 +279,20 @@ export default defineConfig({
 ```json
 {
   "build": {
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm --prefix node_modules/react-native-tauri run dev",
+    "beforeBuildCommand": "npm --prefix node_modules/react-native-tauri run build"
     "devUrl": "http://localhost:3000"
   },
   "app": {
-    "windows": [{
-      "title": "My App",
-      "width": 1024,
-      "height": 768,
-      "resizable": true,
-      "fullscreen": false
-    }]
+    "windows": [
+      {
+        "title": "tauriapp",
+        "resizable": true,
+        "fullscreen": false,
+        "maximized": true,
+        "decorations": true
+      }
+    ],
   }
 }
 ```
