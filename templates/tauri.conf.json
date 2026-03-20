@@ -1,0 +1,37 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "tauriapp",
+  "version": "0.1.0",
+  "identifier": "com.example.tauriapp",
+  "build": {
+    "frontendDist": "../build",
+    "devUrl": "http://localhost:3000",
+    "beforeDevCommand": "npm --prefix node_modules/react-native-tauri run dev",
+    "beforeBuildCommand": "npm --prefix node_modules/react-native-tauri run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "tauriapp",
+        "resizable": true,
+        "fullscreen": false,
+        "maximized": true,
+        "decorations": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
